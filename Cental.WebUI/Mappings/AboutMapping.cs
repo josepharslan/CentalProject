@@ -4,9 +4,9 @@ using Cental.EntityLayer.Entities;
 
 namespace Cental.WebUI.Mappings
 {
-    public class AboutMaping : Profile
+    public class AboutMapping : Profile
     {
-        public AboutMaping()
+        public AboutMapping()
         {
             var thisYear = DateTime.Now.Year;
             CreateMap<About, ResultListAboutDto>().ForMember(dst => dst.ExperienceYear, o => o.MapFrom(src => thisYear - src.StartYear));

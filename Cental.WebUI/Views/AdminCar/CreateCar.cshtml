@@ -1,0 +1,65 @@
+﻿@model CreateCarDto
+@{
+    ViewData["Title"] = "Yeni Araba Oluştur";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+}
+
+<form method="post">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="form-group">
+                <label>Araba Modeli</label>
+                <input type="text" class="form-control" asp-for="ModelName" />
+            </div>
+            <div class="form-group">
+                <label>Araba Görseli</label>
+                <input type="text" class="form-control" asp-for="ImageUrl" />
+            </div>
+            <div class="form-group">
+                <label>Model Yılı</label>
+                <input type="number" class="form-control" asp-for="Year" />
+            </div>
+            <div class="form-group">
+                <label>Kiralama Bedeli</label>
+                <input type="number" class="form-control" asp-for="Price" />
+            </div>
+            <div class="form-group">
+                <label>Koltuk Sayısı</label>
+                <input type="number" class="form-control" asp-for="SeatCount" />
+            </div>
+
+        </div>
+        <div class="col-lg-6">
+            <div class="form-group">
+                <label>Kilometre Bilgisi</label>
+                <input type="number" class="form-control" asp-for="Kilometer" />
+            </div>
+            <div class="form-group">
+                <label>Marka</label>
+                <select asp-items="@ViewBag.brands" asp-for="BrandId" class="form-control">
+                    <option>Markayı Seçiniz</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Yakıt Türü</label>
+                <select asp-items="@ViewBag.gasTypes" asp-for="GasType" class="form-control">
+                    <option>Yakıt Türünü Seçiniz</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Vites Türü</label>
+                <select asp-items="@ViewBag.gearTypes" asp-for="GearType" class="form-control">
+                    <option>Vites Türünü Seçiniz</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Vites Özelliği</label>
+                <select asp-items="@ViewBag.transmissions" asp-for="Transmission" class="form-control">
+                    <option>Vites Özelliğini Seçiniz</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <button class="btn btn-outline-primary">Kaydet</button>
+</form>

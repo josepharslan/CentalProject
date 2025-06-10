@@ -15,6 +15,7 @@ namespace Cental.BusinessLayer.Extensions
     {
         public static void AddServiceRegistration(this IServiceCollection services)
         {
+            //IOC Container
 
             services.AddScoped<IAboutDal, EfAboutDal>();
             services.AddScoped<IAboutService, AboutManager>();
@@ -27,6 +28,11 @@ namespace Cental.BusinessLayer.Extensions
 
             services.AddScoped<ICarDal, EfCarDal>();
             services.AddScoped<ICarService, CarManager>();
+
+            services.AddScoped<IImageService, ImageService>();
+
+            services.AddScoped<IUserSocialService, UserSocialManager>();
+            services.AddScoped<IUserSocialDal, EfUserSocialDal>();
         }
     }
 }

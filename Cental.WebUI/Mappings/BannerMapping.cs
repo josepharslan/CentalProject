@@ -4,9 +4,9 @@ using Cental.EntityLayer.Entities;
 
 namespace Cental.WebUI.Mappings
 {
-    public class BannerMaping : Profile
+    public class BannerMapping : Profile
     {
-        public BannerMaping()
+        public BannerMapping()
         {
             CreateMap<Banner, ResultBannerDto>().ReverseMap();
             CreateMap<Banner, CreateBannerDto>().ReverseMap();
