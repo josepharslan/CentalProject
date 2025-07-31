@@ -1,0 +1,47 @@
+﻿@model CreateBookingDto
+
+<form asp-controller="Default" asp-action="BookCar">
+    <div class="row g-3">
+        <div class="col-12">
+            <select class="form-select" aria-label="Default select example">
+                <option selected disabled>Arabanızı Seçiniz</option>
+                
+            </select>
+        </div>
+        <div class="col-12">
+            <div class="input-group">
+                <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                    <span class="fas fa-map-marker-alt"></span> <span class="ms-1">Pick Up</span>
+                </div>
+                <input class="form-control" type="text" placeholder="Enter a City or Airport" aria-label="Enter a City or Airport">
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="input-group">
+                <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                    <span class="fas fa-map-marker-alt"></span><span class="ms-1">Drop off</span>
+                </div>
+                <input class="form-control" type="text" placeholder="Enter a City or Airport" aria-label="Enter a City or Airport">
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="input-group">
+                <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                    <span class="fas fa-calendar-alt"></span><span class="ms-1">Pick Up</span>
+                </div>
+                <input class="form-control" type="date">
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="input-group">
+                <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                    <span class="fas fa-calendar-alt"></span><span class="ms-1">Drop off</span>
+                </div>
+                <input class="form-control" type="date">
+            </div>
+        </div>
+        <div class="col-12">
+            <button class="btn btn-light w-100 py-2">Book Now</button>
+        </div>
+    </div>
+</form>

@@ -1,23 +1,20 @@
-﻿<form class="row g-3 align-items-end bg-light p-4 rounded shadow-sm" style="--bs-bg-opacity: .8;" asp-action="Filter" method="post">
+﻿<form class="row g-3 align-items-end bg-light p-4 rounded shadow-sm" style="--bs-bg-opacity: .8;" asp-action="Filter" asp-controller="Car" method="post">
     <div class="col-md-3">
         <label for="brandSelect" class="form-label fw-semibold">Marka</label>
-        <select id="brandSelect" class="form-select" asp-items="@ViewBag.cars" name="car">
+        <select id="brandSelect" class="form-select" asp-items="@ViewBag.brands" name="brand">
             <option selected>Araç Seçiniz</option>
-            <!-- Marka seçenekleri buraya gelecek -->
         </select>
     </div>
     <div class="col-md-3">
         <label for="modelSelect" class="form-label fw-semibold">Model</label>
         <select id="modelSelect" class="form-select" asp-items="@ViewBag.gasTypes" name="gas">
-            <option selected>Model Seçiniz</option>
-            <!-- Model seçenekleri buraya gelecek -->
+            <option selected disabled>Model Seçiniz</option>
         </select>
     </div>
     <div class="col-md-3">
         <label for="fuelSelect" class="form-label fw-semibold">Yakıt Türü</label>
         <select id="fuelSelect" class="form-select" asp-items="@ViewBag.gearTypes" name="gear">
-            <option selected>Yakıt Türü Seçiniz</option>
-            <!-- Yakıt türü seçenekleri buraya gelecek -->
+            <option selected disabled>Yakıt Türü Seçiniz</option>
         </select>
     </div>
     <div class="col-md-2">

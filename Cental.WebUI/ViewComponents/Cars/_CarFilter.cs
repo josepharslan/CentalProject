@@ -13,14 +13,14 @@ namespace Cental.WebUI.ViewComponents.Cars
             var brands = _brandService.TGetAll();
 
             ViewBag.brands = (from x in brands
-                            select new SelectListItem
-                            {
-                                Text = x.BrandName,
-                                Value = x.BrandName
-                            }).ToList();
+                              select new SelectListItem
+                              {
+                                  Text = x.BrandName,
+                                  Value = x.BrandName
+                              }).ToList();
+
             ViewBag.gasTypes = GetEnumValues.GetEnums<GasTypes>();
             ViewBag.gearTypes = GetEnumValues.GetEnums<GearTypes>();
-
             return View();
         }
     }

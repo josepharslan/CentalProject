@@ -17,8 +17,9 @@ namespace Cental.EntityLayer.Entities
         public string GasType { get; set; }
         public int Year { get; set; }
         public string Transmission { get; set; }
-        public int BrandId { get; set; }
         public virtual Brand Brand { get; set; }
+        public int BrandId { get; set; }
+        public virtual List<Booking> Bookings { get; set; }
         public virtual List<Review> Reviews { get; set; }
         public int Kilometer { get; set; }
     }

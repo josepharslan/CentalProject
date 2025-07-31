@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Cental.WebUI.Controllers
 {
     [AllowAnonymous]
-    public class LoginController(SignInManager<AppUser> _signInManager) : Controller
+    public class LoginController(SignInManager<AppUser> _signInManager, UserManager<AppUser> _userManager) : Controller
     {
         [HttpGet]
         public async Task<IActionResult> Index(string? returnUrl)
@@ -30,7 +30,26 @@ namespace Cental.WebUI.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "AdminAbout");
+
+            var user = await _userManager.FindByNameAsync(model.UserName);
+
+            var userRole = await _userManager.GetRolesAsync(user);
+            if (userRole != null)
+            {
+                if (userRole.Contains("Admin"))
+                {
+                    return RedirectToAction("Index", "AdminAbout");
+                }
+                else if (userRole.Contains("Manager"))
+                {
+                    return RedirectToAction("Index", "MySocial", new { area = "Manager" });
+                }
+                else if (userRole.Contains("User"))
+                {
+                    return RedirectToAction("Index", "MyProfile", new { area = "User" });
+                }
+            }
+            return RedirectToAction("Index", "Default");
         }
         public async Task<IActionResult> Logout()
         {

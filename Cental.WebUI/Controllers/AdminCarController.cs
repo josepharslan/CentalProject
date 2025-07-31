@@ -28,6 +28,7 @@ namespace Cental.WebUI.Controllers
         public IActionResult Index()
         {
             var value = _carService.TGetAll();
+
             return View(value);
         }
         public IActionResult CreateCar()
