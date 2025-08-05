@@ -5,7 +5,7 @@
 namespace Cental.DataAccessLayer.Migrations
 {
     /// <inheritdoc />
-    public partial class mig_booking_add : Migration
+    public partial class mig_booking_update3 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

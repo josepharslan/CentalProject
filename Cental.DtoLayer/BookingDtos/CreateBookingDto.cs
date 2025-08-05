@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cental.EntityLayer.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -17,5 +18,6 @@ namespace Cental.DtoLayer.BookingDtos
         public DateTime EndDate { get; set; }
         public string Status { get; set; }
         public int CarId { get; set; }
+        public virtual AppUser AppUser { get; set; }
     }
 }

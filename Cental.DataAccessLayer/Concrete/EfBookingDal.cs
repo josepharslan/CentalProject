@@ -15,5 +15,10 @@ namespace Cental.DataAccessLayer.Concrete
         public EfBookingDal(CentalContext context) : base(context)
         {
         }
+
+        public List<Booking> GetBookingsByUserId(int userId)
+        {
+            return _context.Bookings.Where(x => x.AppUserId == userId).ToList();
+        }
     }
 }

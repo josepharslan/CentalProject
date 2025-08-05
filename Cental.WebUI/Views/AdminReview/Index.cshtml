@@ -1,0 +1,54 @@
+﻿@model List<ResultReviewDto>
+@{
+    ViewData["Title"] = "Puanlamalar";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+    int count = 0;
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Araba</th>
+        <th>Puan</th>
+        <th>Yorum</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <td>@count</td>
+            <td>@item.BrandName @item.ModelName</td>
+            <td>
+                @if (item.Rating < 3)
+                {
+                    <span class="badge badge-danger">
+                        @item.Rating
+                    </span>
+                }
+                else if (item.Rating == 3)
+                {
+                    <span class="badge badge-warning">
+                        @item.Rating
+                    </span>
+                }
+                else
+                {
+                    <span class="badge badge-success">
+                        @item.Rating
+                    </span>
+                }
+
+            </td>
+            <td>
+                @item.Content
+            </td>
+@*             <td><button class="btn btn-primary">Devamını Gör</button></td>
+ *@            @*             <td><a asp-action="UpdateTestimonial" asp-route-id="@item.TestimonialId" class="btn btn-warning">Güncelle</a></td>
+            <td><a asp-action="DeleteTestimonial" asp-route-id="@item.TestimonialId" class="btn btn-danger">Sil</a></td>
+ *@        </tr>
+    }
+
+</table>
+<div class="text-center">
+</div>
+

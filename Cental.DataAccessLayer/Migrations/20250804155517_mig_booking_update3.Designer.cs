@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Cental.DataAccessLayer.Migrations
 {
     [DbContext(typeof(CentalContext))]
-    [Migration("20250801124349_mig_booking_add1")]
-    partial class mig_booking_add1
+    [Migration("20250804155517_mig_booking_update3")]
+    partial class mig_booking_update3
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -237,6 +237,13 @@ namespace Cental.DataAccessLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BookingId"));
 
+                    b.Property<string>("AppUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("AppUserId1")
+                        .HasColumnType("int");
+
                     b.Property<int>("CarId")
                         .HasColumnType("int");
 
@@ -259,6 +266,8 @@ namespace Cental.DataAccessLayer.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("BookingId");
+
+                    b.HasIndex("AppUserId1");
 
                     b.HasIndex("CarId");
 
@@ -591,11 +600,19 @@ namespace Cental.DataAccessLayer.Migrations
 
             modelBuilder.Entity("Cental.EntityLayer.Entities.Booking", b =>
                 {
+                    b.HasOne("Cental.EntityLayer.Entities.AppUser", "AppUser")
+                        .WithMany()
+                        .HasForeignKey("AppUserId1")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Cental.EntityLayer.Entities.Car", "Car")
                         .WithMany("Bookings")
                         .HasForeignKey("CarId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("AppUser");
 
                     b.Navigation("Car");
                 });

@@ -10,6 +10,7 @@ namespace Cental.EntityLayer.Entities
 {
     public class Booking : BaseEntity
     {
+        [Key]
         public int BookingId { get; set; }
         public string PickUpLocation { get; set; }
         public string DropOffLocation { get; set; }
@@ -20,5 +21,7 @@ namespace Cental.EntityLayer.Entities
         public string Status { get; set; }
         public int CarId { get; set; }
         public virtual Car Car { get; set; }
+        public int AppUserId { get; set; }
+        public virtual AppUser AppUser { get; set; }
     }
 }

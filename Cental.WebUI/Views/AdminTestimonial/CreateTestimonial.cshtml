@@ -1,0 +1,38 @@
+﻿@model CreateTestimonialDto
+@{
+    ViewData["Title"] = "Referans Ekle";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+}
+
+
+<form method="post" enctype="multipart/form-data" asp-action="CreateTestimonial">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="form-group">
+                <label>Ad Soyad</label>
+                <input type="text" class="form-control" asp-for="Name" placeholder="Adı Soyadı giriniz..." />
+            </div>
+            <div class="form-group">
+                <label>Puan</label>
+                <input type="number" placeholder="1 - 5 ile arasında bir değer giriniz" max="5" min="1" class="form-control" asp-for="ReviewStar" />
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="form-group">
+                <label>Ünvan</label>
+                <input type="text" class="form-control" asp-for="Title" placeholder="Ünvanı giriniz." />
+            </div>
+            <div class="form-group">
+                <label>Görsel</label>
+                <input type="file" class="form-control" asp-for="ImageFile" accept="image/png, image/jpg, image/jpeg" />
+            </div>
+        </div>
+        <div class="col-lg-12 mb-2">
+            <label>Yorum</label>
+            <textarea asp-for="Comment" placeholder="Yorumu giriniz..." class="form-control"></textarea>
+        </div>
+
+    </div>
+
+    <button class="btn btn-outline-primary">Kaydet</button>
+</form>

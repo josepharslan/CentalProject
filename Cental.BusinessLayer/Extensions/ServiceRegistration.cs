@@ -33,6 +33,19 @@ namespace Cental.BusinessLayer.Extensions
 
             services.AddScoped<IUserSocialService, UserSocialManager>();
             services.AddScoped<IUserSocialDal, EfUserSocialDal>();
+
+            services.AddScoped<IBookingDal, EfBookingDal>();
+            services.AddScoped<IBookingService, BookingManager>();
+
+            services.AddScoped<IReviewDal, EfReviewDal>();
+            services.AddScoped<IReviewService, ReviewManager>();
+
+            services.AddScoped<ITestimonialDal, EfTestimonialDal>();
+            services.AddScoped<ITestimonialService, TestimonialManager>();
+
+            services.AddScoped<IFeatureDal, EfFeatureDal>();
+            services.AddScoped<IFeatureService, FeatureManager>();
+
         }
     }
 }

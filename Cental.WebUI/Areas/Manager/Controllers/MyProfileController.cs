@@ -47,7 +47,7 @@ namespace Cental.WebUI.Areas.Manager.Controllers
                 values.PhoneNumber = model.PhoneNumber;
                 values.ImageUrl = model.ImageUrl;
 
-                var updateUser = model.Adapt<AppUser>();
+                var updateUser = model.Adapt<AppUser>();        
 
                 var result = await _userManager.UpdateAsync(values);
                 if (result.Succeeded)
