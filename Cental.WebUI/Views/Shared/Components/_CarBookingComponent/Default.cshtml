@@ -2,46 +2,52 @@
 
 <form asp-controller="Default" asp-action="BookCar">
     <div class="row g-3">
+        <input type="hidden" asp-for="AppUser" />
         <div class="col-12">
-            <select class="form-select" aria-label="Default select example">
-                <option selected disabled>Arabanızı Seçiniz</option>
-                
+            <select asp-items="@ViewBag.cars" asp-for="CarId" class="form-control">
+                <option selected disabled>Markayı Seçiniz</option>
+
             </select>
         </div>
+        <span asp-validation-for="CarId" class="text-danger"></span>
         <div class="col-12">
             <div class="input-group">
                 <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                    <span class="fas fa-map-marker-alt"></span> <span class="ms-1">Pick Up</span>
+                    <span class="fas fa-map-marker-alt"></span> <span class="ms-1">Alış Noktası</span>
                 </div>
-                <input class="form-control" type="text" placeholder="Enter a City or Airport" aria-label="Enter a City or Airport">
+                <input class="form-control" type="text" placeholder="Bir şehir veya havalimanı giriniz" asp-for="PickUpLocation" aria-label="Bir şehir veya havalimanı giriniz">
             </div>
+            <span asp-validation-for="PickUpLocation" class="text-danger"></span>
         </div>
         <div class="col-12">
             <div class="input-group">
                 <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                    <span class="fas fa-map-marker-alt"></span><span class="ms-1">Drop off</span>
+                    <span class="fas fa-map-marker-alt"></span><span class="ms-1">Teslimat Noktası</span>
                 </div>
-                <input class="form-control" type="text" placeholder="Enter a City or Airport" aria-label="Enter a City or Airport">
+                <input class="form-control" type="text" placeholder="Bir şehir veya havalimanı giriniz" asp-for="DropOffLocation" aria-label="Bir şehir veya havalimanı giriniz">
             </div>
+            <span asp-validation-for="DropOffLocation" class="text-danger"></span>
         </div>
         <div class="col-12">
             <div class="input-group">
                 <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                    <span class="fas fa-calendar-alt"></span><span class="ms-1">Pick Up</span>
+                    <span class="fas fa-calendar-alt"></span><span class="ms-1">Alış Tarihi</span>
                 </div>
-                <input class="form-control" type="date">
+                <input class="form-control" type="date" asp-for="StartDate">
             </div>
+            <span asp-validation-for="StartDate" typeof="StartDate" class="text-danger"></span>
         </div>
         <div class="col-12">
             <div class="input-group">
                 <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                    <span class="fas fa-calendar-alt"></span><span class="ms-1">Drop off</span>
+                    <span class="fas fa-calendar-alt"></span><span class="ms-1">Teslimat Tarihi</span>
                 </div>
-                <input class="form-control" type="date">
+                <input class="form-control" type="date" asp-for="EndDate">
             </div>
+            <span asp-validation-for="EndDate" class="text-danger"></span>
         </div>
         <div class="col-12">
-            <button class="btn btn-light w-100 py-2">Book Now</button>
+            <button class="btn btn-light w-100 py-2">Hemen Kirala</button>
         </div>
     </div>
 </form>

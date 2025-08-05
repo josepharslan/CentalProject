@@ -18,6 +18,11 @@ namespace Cental.BusinessLayer.Concrete
             _bookingDal = bookingDal;
         }
 
+        public List<Booking> TGetBookingsByUserId(int userId)
+        {
+            return _bookingDal.GetBookingsByUserId(userId);
+        }
+
         public void TCreate(Booking entity)
         {
             _bookingDal.Create(entity);

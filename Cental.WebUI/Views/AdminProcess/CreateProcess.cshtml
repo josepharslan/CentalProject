@@ -1,0 +1,30 @@
+﻿@model Process
+
+@{
+    ViewData["Title"] = "Süreç Ekle";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+}
+
+<form method="post" asp-action="CreateProcess">
+    <div class="row">
+        <div class="col-lg-6">
+
+            <div class="form-group">
+                <label>Başlık</label>
+                <input type="text" class="form-control" asp-for="Title" placeholder="Başlık giriniz..." />
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="form-group">
+                <label>Açıklama</label>
+                <textarea class="form-control" asp-for="Description" rows="3" placeholder="Açıklama giriniz..."></textarea>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-end mt-3">
+        <button type="submit" class="btn btn-primary">Kaydet</button>
+    </div>
+</form>
+
+

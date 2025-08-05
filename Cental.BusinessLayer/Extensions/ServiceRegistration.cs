@@ -2,6 +2,7 @@
 using Cental.BusinessLayer.Concrete;
 using Cental.DataAccessLayer.Abstract;
 using Cental.DataAccessLayer.Concrete;
+using Cental.DataAccessLayer.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -33,6 +34,31 @@ namespace Cental.BusinessLayer.Extensions
 
             services.AddScoped<IUserSocialService, UserSocialManager>();
             services.AddScoped<IUserSocialDal, EfUserSocialDal>();
+
+            services.AddScoped<IBookingDal, EfBookingDal>();
+            services.AddScoped<IBookingService, BookingManager>();
+
+            services.AddScoped<IReviewDal, EfReviewDal>();
+            services.AddScoped<IReviewService, ReviewManager>();
+
+            services.AddScoped<ITestimonialDal, EfTestimonialDal>();
+            services.AddScoped<ITestimonialService, TestimonialManager>();
+
+            services.AddScoped<IFeatureDal, EfFeatureDal>();
+            services.AddScoped<IFeatureService, FeatureManager>();
+
+            services.AddScoped<IServiceDal, EfServiceDal>();
+            services.AddScoped<IServiceService, ServiceManager>();
+
+            services.AddScoped<IProcessDal, EfProcessDal>();
+            services.AddScoped<IProcessService, ProcessManager>();
+
+            services.AddScoped<IDashboardDal, EfDashboardDal>();
+            services.AddScoped<IDashboardService, DashboardManager>();
+
+            services.AddScoped<IContactDal, EfContactDal>();
+            services.AddScoped<IContactService, ContactManager>();
+
         }
     }
 }

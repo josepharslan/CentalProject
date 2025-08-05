@@ -1,0 +1,77 @@
+﻿@model DashboardViewModel
+
+@{
+    ViewData["Title"] = "Dashboard";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+}
+
+<div class="row">
+    <!-- table card-1 start -->
+    <div class="col-md-12 col-xl-12">
+        <div class="card flat-card">
+            <div class="row-table">
+                <div class="col-sm-6 card-body br">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <i class="icon feather icon-eye text-c-green mb-1 d-block"></i>
+                        </div>
+                        <div class="col-sm-8 text-md-center">
+                            <h5>@Model.Statistics.TotalUsers</h5>
+                            <span>Kullanıcı Sayısı</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 card-body">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <i class="icon feather icon-music text-c-red mb-1 d-block"></i>
+                        </div>
+                        <div class="col-sm-8 text-md-center">
+                            <h5>@Model.Statistics.TotalCars</h5>
+                            <span>Toplam Araç Sayısı</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row-table">
+                <div class="col-sm-6 card-body br">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <i class="icon feather icon-file-text text-c-blue mb-1 d-block"></i>
+                        </div>
+                        <div class="col-sm-8 text-md-center">
+                            <h5>@Model.Statistics.AvailableCars</h5>
+                            <span>Kiralanmış Araç Sayısı</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 card-body">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <i class="icon feather icon-mail text-c-yellow mb-1 d-block"></i>
+                        </div>
+                        <div class="col-sm-8 text-md-center">
+                            <h5>@Model.Statistics.ActiveRentals</h5>
+                            <span>AKtif Kiralanmış Araçlar</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- widget primary card start -->
+        <!-- widget primary card end -->
+    </div>
+    <!-- table card-1 end -->
+    <!-- table card-2 start -->
+    <!-- table card-2 end -->
+    <!-- Widget primary-success card start -->
+    <!-- Widget primary-success card end -->
+    <!-- prject ,team member start -->
+    <!-- prject ,team member start -->
+    <!-- seo start -->
+    <!-- seo end -->
+    <!-- Latest Customers start -->
+    @await Component.InvokeAsync("_DashboardReviewsComponent")
+    <!-- Latest Customers end -->
+</div>
+<!-- [ Main Content ] end -->

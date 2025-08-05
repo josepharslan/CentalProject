@@ -1,0 +1,75 @@
+﻿@model List<ResultTestimonialDto>
+
+<div class="container-fluid py-5 bg-light">
+    <div class="container py-5">
+        <div class="text-center mx-auto pb-4" style="max-width: 700px;">
+            <h1 class="display-5 mb-3">Müşteri <span class="text-primary">Görüşleri</span></h1>
+            <p class="lead mb-0">
+                Hizmet kalitemiz ve kullanıcı memnuniyetimiz hakkında sizlere ışık tutması adına; gerçek müşterilerimizin deneyimlerini paylaşıyoruz.
+            </p>
+        </div>
+
+        <div class="owl-carousel testimonial-carousel mt-5">
+            @foreach (var item in Model)
+            {
+                <div class="testimonial-item position-relative bg-white shadow-sm rounded">
+                    <div class="position-absolute top-0 end-0 p-3">
+                        <i class="fa fa-quote-right fa-2x text-secondary"></i>
+                    </div>
+
+                    <div class="p-4 d-flex align-items-center">
+                        <img src="@item.ImageUrl"
+                             class="rounded-circle me-3"
+                             alt="@item.Name"
+                             style="width:60px; height:60px; object-fit:cover;" />
+                        <div>
+                            <h5 class="mb-1">@item.Name</h5>
+                            <small class="text-muted">@item.Title</small>
+                            <div class="mt-2">
+                                @for (int i = 1; i <= 5; i++)
+                                {
+                                    if (i <= item.ReviewStar)
+                                    {
+                                        <i class="fas fa-star"></i>
+                                    }
+                                    else
+                                    {
+                                        <i class="far fa-star text-muted"></i>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Yorumu -->
+                    <div class="border-top px-4 pb-4">
+                        <p class="mb-0">@item.Comment</p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <!-- Gerekli scriptler -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/owl.carousel/dist/owl.carousel.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".testimonial-carousel").owlCarousel({
+                loop: true,
+                margin: 30,
+                nav: false,
+                dots: true,
+                autoplay: true,
+                autoplayHoverPause: true,
+                responsive:{
+                    0:{ items:1 },
+                    768:{ items:2 },
+                    992:{ items:3 }
+                }
+            });
+        });
+    </script>
+}

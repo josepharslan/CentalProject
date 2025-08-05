@@ -1,0 +1,40 @@
+﻿@using Cental.DtoLayer.ContactDtos
+@model List<ResultContactDto>
+@{
+    ViewData["Title"] = "İletişim";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+}
+
+@{
+    int count = 0;
+}
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Mail</th>
+        <th>Telefon</th>
+        <th>Adres</th>
+        <th>Facebook</th>
+        <th>Twitter</th>
+        <th>Instagram</th>
+        <th>LinkedIn</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <td>@count</td>
+            <td>@item.Email</td>
+            <td>@item.Phone</td>
+            <td>@item.Address</td>
+            <td>@item.FacebookUrl</td>
+            <td>@item.TwitterUrl</td>
+            <td>@item.InstagramUrl</td>
+            <td>@item.LinkedInUrl</td>
+        </tr>
+    }
+</table>
+
+<a asp-action="UpdateContact" asp-route-id="1" class="btn btn-warning">Güncelle</a>
+
+

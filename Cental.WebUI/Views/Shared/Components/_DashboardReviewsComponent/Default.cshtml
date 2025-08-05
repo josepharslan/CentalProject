@@ -1,0 +1,47 @@
+﻿@model List<ResultReviewDto>
+
+
+<div class="col-lg-12 col-md-12">
+    <div class="card table-card review-card">
+        <div class="card-header borderless ">
+            <h5>Müşteri Yorumları</h5>
+            <div class="card-header-right">
+                <div class="btn-group card-option">
+                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="feather icon-more-horizontal"></i>
+                    </button>
+                    <ul class="list-unstyled card-option dropdown-menu dropdown-menu-right">
+                        <li class="dropdown-item full-card"><a href="#!"><span><i class="feather icon-maximize"></i> maximize</span><span style="display:none"><i class="feather icon-minimize"></i> Restore</span></a></li>
+                        <li class="dropdown-item minimize-card"><a href="#!"><span><i class="feather icon-minus"></i> collapse</span><span style="display:none"><i class="feather icon-plus"></i> expand</span></a></li>
+                        <li class="dropdown-item reload-card"><a href="#!"><i class="feather icon-refresh-cw"></i> reload</a></li>
+                        <li class="dropdown-item close-card"><a href="#!"><i class="feather icon-trash"></i> remove</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="card-body pb-0">
+            <div class="review-block">
+                @foreach (var item in Model)
+                {
+                    int rating = 5;
+                    <div class="row">
+                        <div class="col">
+                            <h6 class="m-b-15">@item.BrandName @item.ModelName</h6>
+                            @for (int i = 1; i <= item.Rating; i++)
+                            {
+                                <a href="#!"><i class="feather icon-star-on f-18 text-c-yellow"></i></a>
+                                rating--;
+                            }
+                            @for (int i = 1; i <= rating; i++)
+                            {
+                                <a href="#!"><i class="feather icon-star f-18 text-muted"></i></a>
+
+                            }
+                            <p class="m-t-15 m-b-15 text-muted">@item.Content</p>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

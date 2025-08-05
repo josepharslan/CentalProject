@@ -1,0 +1,55 @@
+﻿@model CreateReviewDto
+
+<form method="post"
+      asp-action="ReviewCar"
+      asp-controller="Booking"
+      asp-area="User">
+
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="reviewModalLabel_@Model.CarId">
+                Araba için Puan Ver
+            </h5>
+            <button type="button" class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Kapat"></button>
+        </div>
+
+        <div class="modal-body">
+            <div asp-validation-summary="ModelOnly" class="text-warning mb-3"></div>
+
+            <div class="mb-3">
+                <textarea asp-for="Content"
+                          class="form-control"
+                          placeholder="Yorumunuzu buraya yazın..."
+                          rows="3"></textarea>
+                <span asp-validation-for="Content"
+                      class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Puanınız:</label>
+                <div>
+                    @for (int i = 1; i <= 5; i++)
+                    {
+                        <input type="radio"
+                               asp-for="Rating"
+                               value="@i"
+                               id="star@i-@Model.CarId" />
+                        <label for="star@i-@Model.CarId">@i</label>
+                    }
+                </div>
+                <span asp-validation-for="Rating"
+                      class="text-danger"></span>
+            </div>
+
+            <input type="hidden" asp-for="CarId" />
+        </div>
+
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-success">
+                Gönder
+            </button>
+        </div>
+    </div>
+</form>

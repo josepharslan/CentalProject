@@ -1,7 +1,86 @@
-﻿
+﻿@model List<ResultBookingDto>
 @{
     ViewData["Title"] = "Kiralama Sayfası";
     Layout = "~/Areas/Manager/Views/ManagerLayout/Index.cshtml";
+    int count = 0;
 }
 
 
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Marka</th>
+        <th>Model</th>
+        <th>Başlangıç Tarihi</th>
+        <th>Bitiş Tarihi</th>
+        <th>Durum</th>
+        <th>Onayla</th>
+        <th>İptal Et</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+
+        <tr>
+            <td>@count</td>
+            <td>
+                @item.BrandName
+            </td>
+            <td>
+                @item.ModelName
+            </td>
+            <td>
+                @item.StartDate.ToString("dd-MMM-yyyy")
+            </td>
+            <td>
+                @item.EndDate.ToString("dd-MMM-yyyy")
+            </td>
+            <td>
+                @if (item.Status == "Onaylandı")
+                {
+                    <span class="badge badge-success">
+                        @item.Status
+                    </span>
+                }
+                else if (item.Status == "Onay Bekliyor")
+                {
+                    <span class="badge badge-primary">
+                        @item.Status
+                    </span>
+                }
+                else
+                {
+                    <span class="badge badge-danger">@item.Status</span>
+                }
+            </td>
+            <td>
+                <a asp-action="ConfirmBooking" asp-route-id="@item.BookingId" class="btn btn-warning">Onayla</a>
+            </td>
+            <td>
+                <button type="button" class="btn btn-danger" onclick="confirmCancel('@Url.Action("CancelBooking", "Booking", new { area = "Manager", id = item.BookingId})')">İptal Et</button>
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+<script>
+    function confirmCancel(cancelUrl) {
+        Swal.fire({
+            title: 'Emin misiniz?',
+            text: "Bu kiralamayı iptal etmek istediğinize emin misiniz?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Evet, iptal et!',
+            cancelButtonText: 'Hayır'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = cancelUrl;
+            }
+        });
+    }
+</script>
